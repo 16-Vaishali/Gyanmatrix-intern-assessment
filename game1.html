@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Jumble-Humble</title>
+</head>
+<body>
+    <div class="container">
+    	<h2>Jumble-Humble</h2>
+ <div class="content">
+ 	<p class="word"></p>
+ 	<div class="details">
+ 		<p class="hint">Hint:<span></span></p>
+ 		<p class="time">Time:<span><b>30</b> s</span></p>
+ 	</div>
+ 	<input type="text" placeholder="Enter the word">
+ 	<div class="buttons">
+ 		<button class="refresh">Refresh</button>
+ 		<button class="check">Check</button>
+ 	</div>
+ </div>
+    </div>
+</body>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		font-family: Verdana;
+	}
+	body{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 100vh;
+		background: linear-gradient(to right,rgb(242,112,156), rgb(255,148,114));
+	}
+	.container{
+		width: 500px;
+		border-radius: 10%;
+		background: linear-gradient(#bdc3c7,#2c3e50);
+		box-shadow: 20px 20px 34px rgba(0, 0, 0, 0.03);
+
+	}
+	.container:hover{
+		box-shadow: 10px 10px 54px rgba(70, 60, 220, 0.8);
+	}
+	.container h2{
+		font-size: 30px;
+		font-weight: 500;
+		padding: 18px 25px;
+		border-bottom: 1px solid #fff;
+	}
+	.container .content{
+		margin: 25px 20px 35px;
+	}
+	.content .word{
+		font-size: 35px;
+		font-weight: 500;
+		text-align: center;
+		letter-spacing: 24px;
+		margin-right: -24px;
+		text-transform: uppercase;
+	}
+	.content .details{
+		margin: 25px 0 20px;
+	}
+	.details p{
+    font-size: 19px;
+    margin-bottom: 10px;	
+ }
+ .details p b{
+ 	font-weight: 500;
+ }
+ .content input{
+ 	width: 100%;
+ 	height: 60px;
+ 	outline: none;
+ 	padding: 0 16px;
+ 	border-radius: 5px;
+ 	border: 1px solid #aaa;
+ }
+ .content .buttons{
+ 	display: flex;
+ 	margin-top: 20px;
+ 	justify-content: space-between;
+ }
+ .buttons button{
+ 	border: none;
+ 	outline: none;
+ 	color: #fff;
+ 	cursor: pointer;
+ 	padding: 15px 0;
+ 	font-size: 18px;
+ 	width: calc(100%/2 - 8px);
+ 	border-radius: 10%;
+ }
+  .buttons .refresh{
+ 	background: #6c757d;
+ }
+   .buttons .refresh:hover{
+   	background:linear-gradient(to right,#8e2de2,#4a00e0);
+   }
+   .buttons .check{
+ 	background: #6c757d;
+ }
+ .buttons .check:hover{
+   	background:linear-gradient(to right,#8e2de2,#4a00e0);
+   }
+
+</style>
+<script>
+	const wordText = document.querySelector(".word");
+	const hintText = document.querySelector(".hint span");
+	const timeText = document.querySelector(".time b");
+	const inputF = document.querySelector("input");
+	const refresh  = document.querySelector(".refresh");
+	const check = document.querySelector(".check");
+	const words =[
+	{
+		word: "hermoine",
+		hint: "Harry's female bestie"
+	},
+	{
+		word: "werewolf",
+		hint: "Lupin is a"
+	},
+	{
+		word: "Snape",
+		hint: "The half blood prince is"
+	},
+	{
+		word:"Slytherine",
+		hint:"Malfoi's house is"
+	},
+	{
+		word: "Villain",
+		hint:"Voldermart is a"
+	}];
+	let correct, timer;
+	const initTimer = maxTime => {
+		clearInterval(timer);
+		timer = setInterval(() => {
+           if(maxTime>0){
+           	maxTime--;
+            return timeText.innerText = maxTime;
+           }
+           clearInterval(timer);
+           alert("Time over!");
+           initGame();
+		}, 1000);
+	}
+	const initGame = () =>{
+		initTimer(30);
+		let randomObj =  words[Math.floor(Math.random() * words.length)];
+		let wordArray = randomObj.word.split("");
+		for(let i = wordArray.length - 1; i>0; i--){
+	        let j = Math.floor(Math.random() * (i+1));
+	        [wordArray[i],wordArray[j]] = [wordArray[j],wordArray[i]];
+		}
+		wordText.innerText = wordArray.join("");
+		hintText.innerText = randomObj.hint;
+		correct = randomObj.word.toLowerCase();
+		inputF.value = "";
+		inputF.setAttribute("maxlength", correct.length);
+		console.log(randomObj);
+	}
+	initGame();
+	const checkW = () => {
+		let userWord = inputF.value;
+		if(!userWord) return alert('Please enter the word')
+		if(userWord !== correct) return alert('Oops! Wrong answer');
+	    alert('Whoo Bingo!');
+	}
+	refresh.addEventListener("click", initGame);
+	check.addEventListener("click", checkW);
+</script>
+</html>

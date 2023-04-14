@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-image: url("bg.png");
+    background-color: black;
+    background-position: cover;
+}
+#navbar{
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 20px 80px;
+        background-color: transparent;
+        position: sticky;
+        top: 0;
+        left: 0;
+}
+.container{
+    position: relative;
+    margin-top: 80px;
+    width: 450px;
+    height: auto;
+    background: transparent;
+    border: none;
+}
+.label{
+padding: 20px 140px;
+font-size: 40px;
+font-weight: 500;
+color: white;
+}
+.login{
+    padding: 30px;
+}
+.login .font{
+    font-size: 19px;
+    color: white;
+    margin: 5px 0;
+}
+.login input{
+    outline: none;
+    height: 45px;
+    width: 350px;
+    padding: 0 5px;
+    font-size: 18px; 
+    background: transparent;
+    border: 2px solid orangered;
+    border-radius: 45px;
+}
+.login .font2{
+    margin-top: 30px;
+}
+.login button{
+    margin: 15px 0 5px;
+    height: 45px;
+    width: 350px;
+    border-radius: 30px;
+     background: #FFCD2D;
+    font-weight: 500;
+    cursor: pointer;
+}
+.login button:hover{
+    background-color: green;
+}
+.login #e_error,
+.login #p_error{
+       margin-top: 4px;
+       width: 340px;
+       font-size: 19px;
+       color: crimson;
+       text-align: center;
+       display: none;
+}
+.signup{
+    padding-top: 10px;
+}
+.signup a{
+    text-decoration: none;
+}
+.fa-eye{
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}

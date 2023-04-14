@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/50a8cc3a65.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="wand.webp">
+    <link rel="stylesheet" href="style.css">
+    <title>Wizard house</title>
+</head>
+<body><section>
+    <div class="snow1">
+    <section id="navbar">
+        <a href="#"><img src="Group 73.png" height="90px" width="100px"></a>
+    </section>
+       <section class="container">
+            <h1 class="label">LogIn</h1>
+            <form class="login" action="students.html" method="post" name="form" onsubmit="return validated()">
+                    <input autocomplete="off" type="text" name="mail" placeholder="Your email" class="font">
+                    <div id="e_error">Please fill this</div>
+                    <input type="password" name="password" placeholder="Your password" class="font font2" id="password">
+                    <span><i class="fa-solid fa-eye" onclick="toggle()"></i></span>
+                    <div id="p_error">Please fill this</div>
+                    <button type="submit">Login</button>
+                    <h4 style="color: white;" class="signup">New to Wizard house? <a href="signup.html">Sign up here</a></h4>
+            </form>
+        </section> 
+        </div>
+        </section>
+</body>
+<script>
+    var email = document.forms['form']['mail'];
+var password = document.forms['form']['password'];
+var email_error = document.getElementById('e_error');
+var pass_error = document.getElementById('p_error');
+email.addEventListener('textInput',email_verify)
+password.addEventListener('textInput',pass_verify)
+function validated(){
+    if(email.value.length < 9){
+        email.style.border = "1px solid red";
+        email_error.style.display="block";
+        email.focus();
+        return false;
+    }
+    if(password.value.length < 9){
+        password.style.border = "1px solid red";
+        pass_error.style.display="block";
+        email.focus();
+        return false;
+    }
+}
+function email_verify(){
+     if(email.value.length >=8){
+        email.style.border = "1px solid silver";
+        e_error.style.display="none";
+        return true;
+     }
+function pass_verify(){
+    if(password.value.length >=8){
+        password.style.border = "1px solid silver";
+        p_error.style.display="none";
+        return true;
+     }
+}
+}
+var state = false;
+function toggle(){
+    if(state){
+        document.getElementById("password").setAttribute("type","password");
+        state = false;
+    }
+    else{
+        document.getElementById("password").setAttribute("type","text");
+        state = true;
+    }
+}
+</script>
+</html>
