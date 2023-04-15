@@ -22,32 +22,17 @@
 	</section>
      
 
-    <div class="img1">
+    <div class="wrapper">
         <a href="harry.html">
             <img src="harry1.png">
         </a>
-    </div>
-
-    <div class="img2">
         <a href="cho.html"><img src="student listing card (1).png">
         </a>
-    </div>
-
-    <div class="img3">
         <a href="malfoi.html"><img src="student listing card (2).png"></a>
-    </div>
-
-    <div class="img4">
         <a href="ron.html"><img src="student listing card (3).png"></a>
-    </div>
-
-    <div class="img5">
         <a href="gregory.html"><img src="student listing card (4).png"></a>
-    </div>
-
-    <div class="img6">
         <a href="hermoine.html"><img src="student listing card (5).png"></a>
-    </div>   
+       </div>
 </body>
 <style>
     *{
@@ -98,53 +83,6 @@ position: relative;
 	background-color: #334E58;
 }
 
-.img1{
-    position: absolute;
-    width: 350px;
-    height: 350px;
-    left: 70px;
-    top: 135px;
-}
-
-.img2{
-    position: absolute;
-    width: 350px;
-    height: 353px;
-    left: 530px;
-    top: 136px
-}
-
-.img3{
-    position: absolute;
-    width: 350px;
-    height: 353px;
-    left: 970px;
-    top: 136px;
-}
-
-.img4{
-    position: absolute;
-    width: 350px;
-    height: 353px;
-    left: 70px;
-    top: 534px;    
-}
-
-.img5{
-    position: absolute;
-    width: 350px;
-    height: 353px;
-    left: 520px;
-    top: 534px;
-}
-
-.img6{
-    position: absolute;
-    width: 350px;
-    height: 353px;
-    left: 980px;
-    top: 534px;    
-}
 #navbar{
 	display: flex;
 	align-items: center;
@@ -166,5 +104,27 @@ position: relative;
 #navbar li a.active{
 	color: #33261d ;	
 }
+	.wrapper{
+        display: grid;
+        margin-left: 0;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-column-gap: 40px;
+    }
+	@media (max-width:600px) {
+        body {
+     background: none; 
+}
+        .wrapper{
+        display: grid;
+        align-items: center;
+        padding-left: 90px;
+        grid-template-columns: 200px;
+        grid-column-gap: 0;
+    }
+    .wrapper img{
+        width: 650px;
+        height: 650px;
+    }
+    }
 </style>
 </html>
